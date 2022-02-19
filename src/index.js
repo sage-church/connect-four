@@ -22,43 +22,51 @@ class Board extends React.Component {
       [0, 1, 2, 3, 4, 5],
       [6, 7, 8, 9, 10, 11]
     ];
-    var redIsNext = this.state.redIsNext;
+    const bottomCircles = [0, 6];
+    var isCircleOnBottom = false
     var changeColor = false;
+    var redIsNext = this.state.redIsNext;
+    
 
-    for (let y = 0; y < columns.length; y++) {
-      for (let j = 0; j < columns[j].length; j++) {
-        if (i = columns[y][j]) {
-          
-        }
+    for (let bottomCircle = 0; bottomCircle < bottomCircles.length; bottomCircle++) {
+      if (i === bottomCircles[bottomCircle]) {
+        isCircleOnBottom = true
       }
     }
-
-    if (i === 0 && 
+    if (
+      isCircleOnBottom && 
       circles[i].backgroundColor !== 'red' && 
-      circles[i].backgroundColor !== 'yellow') {
+      circles[i].backgroundColor !== 'yellow'
+      ) {
         redIsNext ? circles[i].backgroundColor = 'red' : circles[i].backgroundColor = 'yellow';
         redIsNext = !redIsNext;
     } else {
-        for (let x = 0; x < i; x++) {
-          if (circles[x].backgroundColor === 'rgb(194, 194, 194)') {
-            break;
-          } else if (x === i - 1 && 
-            circles[i].backgroundColor !== 'red' && 
-            circles[i].backgroundColor !== 'yellow'){
-            changeColor = true;
+        for (let col = 0; col < columns.length; col++) {
+          for (let circ = 0; circ < columns[col].length; circ++) {
+            if (i === columns[col][circ]) {
+
+              for (let j = 0; j < columns[col].indexOf(i); j++) {
+                if (circles[columns[col][j]].backgroundColor === 'rgb(194, 194, 194)') {
+                  break;
+                } else if (j === columns[col].indexOf(i) - 1 && 
+                  circles[i].backgroundColor !== 'red' && 
+                  circles[i].backgroundColor !== 'yellow'){
+                  changeColor = true;
+                }
+              }
+            }
           }
         }
-        if (changeColor) {
-          redIsNext ? circles[i].backgroundColor = 'red' : circles[i].backgroundColor = 'yellow';
-          redIsNext = !redIsNext;
-        }
-      } 
-      this.setState ({
-        circles: circles,
-        redIsNext: redIsNext,
-      }); 
+    }
+    if (changeColor) {
+      redIsNext ? circles[i].backgroundColor = 'red' : circles[i].backgroundColor = 'yellow';
+      redIsNext = !redIsNext;
+    }
+    this.setState ({
+      circles: circles,
+      redIsNext: redIsNext,
+    });
   }
-
 
   render () {
     return (

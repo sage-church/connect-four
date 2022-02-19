@@ -10,29 +10,40 @@ class Board extends React.Component {
     super(props);
     this.state = {
       circles: Array.from({length: 6}, () => ({backgroundColor: 'rgb(194, 194, 194)'})),
+      redIsNext: true
     }
     
   }
 
   handleClick (i) {
     const circles = this.state.circles.slice();
-    var changeToRed = false;
+    var redIsNext = this.state.redIsNext
+    var changeColor = false;
 
-    if (i === 0 && circles[i].backgroundColor !== 'red') {
-      circles[i].backgroundColor = 'red'
+    if (i === 0 && 
+      circles[i].backgroundColor !== 'red' && 
+      circles[i].backgroundColor !== 'yellow') {
+        redIsNext ? circles[i].backgroundColor = 'red' : circles[i].backgroundColor = 'yellow';
+        redIsNext = !redIsNext;
     } else {
         for (let x = 0; x < i; x++) {
           if (circles[x].backgroundColor === 'rgb(194, 194, 194)') {
             break;
-          } else if (x === i - 1){
-            changeToRed = true;
+          } else if (x === i - 1 && 
+            circles[i].backgroundColor !== 'red' && 
+            circles[i].backgroundColor !== 'yellow'){
+            changeColor = true;
           }
         }
-        if (changeToRed) {
-          circles[i].backgroundColor = 'red'
+        if (changeColor) {
+          redIsNext ? circles[i].backgroundColor = 'red' : circles[i].backgroundColor = 'yellow';
+          redIsNext = !redIsNext;
         }
-    } 
-      this.setState ({circles: circles}); 
+      } 
+      this.setState ({
+        circles: circles,
+        redIsNext: redIsNext,
+      }); 
   }
 
 

@@ -66,6 +66,27 @@ body {
   background-color: rgb(160, 160, 160);
 }
 
+@media (min-width: 1200px) {
+  .board {
+    width: 750px;
+  }
+
+  .circle {
+    width: 55px;
+    height: 55px;
+    border-radius: 35px;
+    margin: 13px;
+  }
+
+  .status {
+    font-size: 2.3rem;
+  }
+
+  .reset {
+    margin: 0 auto;
+  }
+}
+
 @media (max-width: 624px) {
   .board {
     width: 350px;
@@ -115,3 +136,4 @@ body {
     height: 2rem;
   }
 }
+

@@ -42,7 +42,7 @@ class Board extends React.Component {
 
     return (
       <>
-      <div className='entire-board'>
+      <div className='board'>
         <div className='column'>
           {this.renderCircle(5)}
           {this.renderCircle(4)}
@@ -113,7 +113,7 @@ class Game extends React.Component {
       circles: Array.from({length: 42}, () => ({backgroundColor: 'rgb(194, 194, 194)'})),
       redIsNext: true,
       resetButton: {display: 'none'},
-      viewportColor: {backgroundColor: 'rgb(235, 235, 235)'}
+      coloredBackdrop: {backgroundColor: 'rgb(235, 235, 235)'}
     }
   }
 
@@ -137,9 +137,9 @@ class Game extends React.Component {
         calculateWinner(circles) ||
         circles[i].backgroundColor === 'red' ||
         circles[i].backgroundColor === 'yellow'
-        ) {
-          return
-        } 
+      ) {
+        return
+    } 
     
     for (let bottomCircle = 0; bottomCircle < bottomCircles.length; bottomCircle++) {
       if (i === bottomCircles[bottomCircle]) {
@@ -166,12 +166,12 @@ class Game extends React.Component {
     if (calculateWinner(circles) === 'red') {
         this.setState({
           resetButton: {display: 'block'},
-          viewportColor: {backgroundColor: 'rgba(207, 0, 0, 0.644)'}
+          coloredBackdrop: {backgroundColor: 'rgba(207, 0, 0, 0.644)'}
         });
     } else if (calculateWinner(circles) === 'yellow'){
       this.setState({
         resetButton: {display: 'block'},
-        viewportColor: {backgroundColor: 'rgba(248, 228, 45, 0.76)'}
+        coloredBackdrop: {backgroundColor: 'rgba(248, 228, 45, 0.76)'}
       });
     }
   }
@@ -181,7 +181,7 @@ class Game extends React.Component {
       circles: Array.from({length: 42}, () => ({backgroundColor: 'rgb(194, 194, 194)'})),
       redIsNext: true,
       resetButton: {display: 'none'},
-      viewportColor: {backgroundColor: 'rgb(235, 235, 235)'},
+      coloredBackdrop: {backgroundColor: 'rgb(235, 235, 235)'},
     })
   }
 
@@ -197,19 +197,24 @@ class Game extends React.Component {
       }
 
     return (
-    <div 
-      className='viewport'
-      style={this.state.viewportColor}
-    >
-      <Board 
-        onClick={(i) => this.circleClick(i)}
-        circles={this.state.circles}
-      />
-      <div className='status'>
-        {status}
-      </div>
-      {this.renderReset()}
-    </div>
+      <>
+        <div 
+          className='coloredBackdrop'
+          style={this.state.coloredBackdrop}
+        >
+        </div>
+        <div className='game-content'>
+          <Board 
+            onClick={(i) => this.circleClick(i)}
+            circles={this.state.circles}
+          />
+          <div className='status'>
+            {status}
+          </div>
+          {this.renderReset()}
+        </div>
+      </>
+    
     )
   }
 

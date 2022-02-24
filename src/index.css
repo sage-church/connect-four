@@ -2,16 +2,19 @@ body {
   font-family: sans-serif;
 }
 
-.viewport {
+.coloredBackdrop {
   position: fixed;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  padding: 30px 30px 0 30px;
+  inset: 0;
+  z-index: 1;
 }
 
-.entire-board {
+.game-content {
+  position: relative;
+  padding: 30px 5px 0 5px;
+  z-index: 2;
+}
+
+.board {
   background-color: rgb(0, 51, 109);
   padding: 20px;
   border-radius: 10px;
@@ -26,7 +29,7 @@ body {
   height: 50px;
   width: 50px;
   border: solid 1px rgb(36, 36, 36);
-  margin: .8rem;
+  margin: 12.8px;
   border-radius: 25px;
 }
 
@@ -36,15 +39,16 @@ body {
   margin: auto;
   text-align: center;
   box-sizing: border-box;
-  font-size: 24px;
+  font-size: 1.8rem;
   color: rgb(27, 27, 27);
 }
 
 .reset {
-  width:  60px;
+  width:  3.75rem;
+  height: 3rem;
   text-align: center;
-  margin: auto;
-  font-size: 20px;
+  margin: 20px auto;
+  font-size: 1.25rem;
   border: outset gray;
   background-color: rgb(209, 209, 209);
   color: rgb(37, 37, 37);
@@ -60,4 +64,54 @@ body {
 
 .reset:active {
   background-color: rgb(160, 160, 160);
+}
+
+@media (max-width: 624px) {
+  .board {
+    width: 350px;
+  }
+
+  .circle {
+    height: 36px;
+    width: 36px;
+    margin: 5px;
+  }
+
+  .status {
+    width: 350px;
+    font-size: 1.4rem;
+  }
+
+  .reset {
+    font-size: 1rem;
+    width: 3.5rem;
+    height: 2.5rem;
+  }
+}
+
+@media (max-width: 424px) {
+  body {
+    min-width: 270px
+  }
+
+  .board {
+    width: 220px;
+  }
+
+  .circle {
+    width: 22px;
+    height: 22px;
+    margin: 3px;
+  }
+
+  .status {
+    width: 220px;
+    font-size: 1rem;
+  }
+
+  .reset {
+    font-size: .8rem;
+    width: 2.3rem;
+    height: 2rem;
+  }
 }

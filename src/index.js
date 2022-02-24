@@ -1,40 +1,47 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import {lines} from './win-lines';
+
 
 function Circle (props) {
   return (
     <div 
       className='circle'
+      onClick={props.onClick}
       style={props.style}
-      onClick={props.onClick} 
     >
     </div>
   );
 }
 
-class Board extends React.Component {
+function Reset (props) {
+  return (
+    <div 
+      className='reset'
+      style={props.style}
+      onClick={props.onClick}
+    >
+    Reset Board
+    </div>
+  )
+}
 
-  constructor (props) {
-    super(props);
-    this.state = {
-      circles: Array.from({length: 42}, () => ({backgroundColor: 'rgb(194, 194, 194)'})),
-      redIsNext: true
-    }
-    
-  }
+class Board extends React.Component {
 
   renderCircle (i) {
     return (
       <Circle 
-        onClick={() => this.handleClick(i)}
-        style={this.state.circles[i]}
+        onClick={() => this.props.onClick(i)}
+        style={this.props.circles[i]}
       />
     )
   }
 
   render () {
+
     return (
+      <>
       <div className='entire-board'>
         <div className='column'>
           {this.renderCircle(5)}
@@ -93,35 +100,60 @@ class Board extends React.Component {
           {this.renderCircle(36)}
         </div>
       </div>
+      </>
+    )
+  }
+}
+
+class Game extends React.Component {
+
+  constructor (props) {
+    super(props);
+    this.state = {
+      circles: Array.from({length: 42}, () => ({backgroundColor: 'rgb(194, 194, 194)'})),
+      redIsNext: true,
+      resetButton: {display: 'none'},
+    }
+  }
+
+  renderReset () {
+    return (
+      <Reset 
+        onClick={() => this.resetClick()}
+        style={this.state.reset}
+        />
     )
   }
 
-  handleClick (i) {
+  circleClick (i) {
 
     const circles = this.state.circles.slice();
     const bottomCircles = [0, 6, 12, 18, 24, 30, 36];
     var changeColor = false;
     var redIsNext = this.state.redIsNext;
-    
+
     if (
-      circles[i].backgroundColor !== 'red' && 
-      circles[i].backgroundColor !== 'yellow'
-      ) {
-          for (let bottomCircle = 0; bottomCircle < bottomCircles.length; bottomCircle++) {
-            if (i === bottomCircles[bottomCircle]) {
-              changeColor = true;
-              break
-            } else if (bottomCircle < 6) {
-              continue
-            } else if (
-                circles[i - 1].backgroundColor === 'red' || 
-                circles[i - 1].backgroundColor === 'yellow'
-              ) {
-                  changeColor = true;
-            }
-          }
-          
+        calculateWinner(circles) ||
+        circles[i].backgroundColor === 'red' ||
+        circles[i].backgroundColor === 'yellow'
+        ) {
+          return
+        } 
+    
+    for (let bottomCircle = 0; bottomCircle < bottomCircles.length; bottomCircle++) {
+      if (i === bottomCircles[bottomCircle]) {
+        changeColor = true;
+        break
+      } else if (bottomCircle < 6) {
+        continue
+      } else if (
+          circles[i - 1].backgroundColor === 'red' || 
+          circles[i - 1].backgroundColor === 'yellow'
+        ) {
+            changeColor = true;
+      }
     }
+          
     if (changeColor) {
       redIsNext ? circles[i] = {backgroundColor: 'red'} : circles[i] = {backgroundColor: 'yellow'};
       redIsNext = !redIsNext;
@@ -130,15 +162,70 @@ class Board extends React.Component {
       circles: circles,
       redIsNext: redIsNext,
     });
+    if (calculateWinner(circles)) {
+      this.setState({
+        reset: {display: 'block'}
+      });
+    }
+  }
+
+  resetClick() {
+    this.setState({
+      circles: Array.from({length: 42}, () => ({backgroundColor: 'rgb(194, 194, 194)'})),
+      redIsNext: true,
+      reset: {display: 'none'},
+      
+    })
+  }
+
+  render() {
+    const winner = calculateWinner(this.state.circles)
+      let status;
+      if (winner) {
+        const firstLetterCaps = winner.charAt(0).toUpperCase()
+        const winnerCaps = firstLetterCaps + winner.slice(1)
+        status = winnerCaps + ' has won!';
+      } else {
+        status = 'Next player: ' + (this.state.redIsNext ? 'Red' : 'Yellow');
+      }
+
+      return (
+        <>
+        <Board 
+          onClick={(i) => this.circleClick(i)}
+          circles={this.state.circles}
+        />
+        <div className='status'>
+          {status}
+        </div>
+        {this.renderReset()}
+        </>
+      )
   }
 }
 
-function calculateWinner(circles) {
-
-}
+// ======================================================
 
 ReactDOM.render(
-  <Board />,
+  <Game />,
   document.getElementById('root')
 );
+
+function calculateWinner(circles) {
+  //winning lines array is imported at top of file
+  for (let index = 0; index < lines.length; index++) {
+    const [a, b, c, d] = lines[index];
+    if (
+      circles[a].backgroundColor !== 'rgb(194, 194, 194)' &&
+      circles[a].backgroundColor === circles[b].backgroundColor &&
+      circles[b].backgroundColor === circles[c].backgroundColor &&
+      circles[c].backgroundColor === circles[d].backgroundColor
+      ) {
+        return circles[a].backgroundColor;
+      }
+    }
+    return null;
+}
+
+
 

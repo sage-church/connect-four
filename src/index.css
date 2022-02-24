@@ -1,6 +1,7 @@
 body {
   margin: 20px;
   font-family: sans-serif;
+  background-color: rgb(235, 235, 235);
 }
 
 .entire-board {
@@ -20,4 +21,36 @@ body {
   border: solid 1px rgb(36, 36, 36);
   margin: .8rem;
   border-radius: 25px;
+}
+
+.status {
+  width:  546px;
+  padding: 20px 0;
+  margin: auto;
+  text-align: center;
+  box-sizing: border-box;
+  font-size: 24px;
+  color: rgb(27, 27, 27);
+}
+
+.reset {
+  width:  60px;
+  text-align: center;
+  margin: auto;
+  font-size: 20px;
+  border: outset gray;
+  background-color: rgb(209, 209, 209);
+  color: rgb(37, 37, 37);
+  border-radius: 30px;
+  padding: 15px 20px;
+  box-shadow: 0px 0px 5px 3px;
+}
+
+.reset:hover {
+  background-color: rgb(192, 192, 192);
+  cursor: pointer;
+}
+
+.reset:active {
+  background-color: rgb(160, 160, 160);
 }

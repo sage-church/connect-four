@@ -113,6 +113,7 @@ class Game extends React.Component {
       circles: Array.from({length: 42}, () => ({backgroundColor: 'rgb(194, 194, 194)'})),
       redIsNext: true,
       resetButton: {display: 'none'},
+      viewportColor: {backgroundColor: 'rgb(235, 235, 235)'}
     }
   }
 
@@ -120,7 +121,7 @@ class Game extends React.Component {
     return (
       <Reset 
         onClick={() => this.resetClick()}
-        style={this.state.reset}
+        style={this.state.resetButton}
         />
     )
   }
@@ -162,9 +163,15 @@ class Game extends React.Component {
       circles: circles,
       redIsNext: redIsNext,
     });
-    if (calculateWinner(circles)) {
+    if (calculateWinner(circles) === 'red') {
+        this.setState({
+          resetButton: {display: 'block'},
+          viewportColor: {backgroundColor: 'rgba(207, 0, 0, 0.644)'}
+        });
+    } else if (calculateWinner(circles) === 'yellow'){
       this.setState({
-        reset: {display: 'block'}
+        resetButton: {display: 'block'},
+        viewportColor: {backgroundColor: 'rgba(248, 228, 45, 0.76)'}
       });
     }
   }
@@ -173,12 +180,12 @@ class Game extends React.Component {
     this.setState({
       circles: Array.from({length: 42}, () => ({backgroundColor: 'rgb(194, 194, 194)'})),
       redIsNext: true,
-      reset: {display: 'none'},
-      
+      resetButton: {display: 'none'},
+      viewportColor: {backgroundColor: 'rgb(235, 235, 235)'},
     })
   }
 
-  render() {
+  renderBoard () {
     const winner = calculateWinner(this.state.circles)
       let status;
       if (winner) {
@@ -189,17 +196,29 @@ class Game extends React.Component {
         status = 'Next player: ' + (this.state.redIsNext ? 'Red' : 'Yellow');
       }
 
+    return (
+    <div 
+      className='viewport'
+      style={this.state.viewportColor}
+    >
+      <Board 
+        onClick={(i) => this.circleClick(i)}
+        circles={this.state.circles}
+      />
+      <div className='status'>
+        {status}
+      </div>
+      {this.renderReset()}
+    </div>
+    )
+  }
+
+  render() {
       return (
         <>
-        <Board 
-          onClick={(i) => this.circleClick(i)}
-          circles={this.state.circles}
-        />
-        <div className='status'>
-          {status}
-        </div>
-        {this.renderReset()}
+         {this.renderBoard()}
         </>
+
       )
   }
 }

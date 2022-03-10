@@ -8,6 +8,8 @@ body {
   z-index: 1;
 }
 
+/* Main content  */
+
 .game-content {
   position: relative;
   padding: 30px 5px 0 5px;
@@ -53,7 +55,7 @@ body {
   background-color: rgb(209, 209, 209);
   color: rgb(37, 37, 37);
   border-radius: 30px;
-  padding: 15px 20px;
+  padding: 1.5rem 2rem;
   box-shadow: 0px 0px 5px 3px;
 }
 
@@ -65,6 +67,8 @@ body {
 .reset:active {
   background-color: rgb(160, 160, 160);
 }
+
+/* Styles for larger screen widths */
 
 @media (min-width: 1200px) {
   .board {
@@ -87,6 +91,8 @@ body {
   }
 }
 
+/* Alternate styles for smaller screen widths */
+
 @media (max-width: 624px) {
   .board {
     width: 350px;
@@ -107,6 +113,7 @@ body {
     font-size: 1rem;
     width: 3.5rem;
     height: 2.5rem;
+    padding: 1.25rem 1.5rem;
   }
 }
 

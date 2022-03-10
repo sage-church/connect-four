@@ -4,6 +4,7 @@
 
 export const lines = [
     //Below notes count rows from bottom to top.  
+
     //winning combinations for first row
     [0, 6, 12, 18],
     [6, 12, 18, 24],
@@ -34,7 +35,9 @@ export const lines = [
     [11, 17, 23, 29],
     [17, 23, 29, 35],
     [23, 29, 35, 41],
-    //below notes count columns from left to right
+
+    //Below notes count columns from left to right
+
     //winning combinations for first column
     [0, 1, 2, 3],
     [1, 2, 3, 4],
@@ -63,7 +66,9 @@ export const lines = [
     [36, 37, 38, 39],
     [37, 38, 39, 40],
     [38, 39, 40, 41],
+
     //Below arrays are for winning diagonal line combinations where the line runs from bottom-left
+
     //to top-right
     [2, 9, 16, 23],
     [1, 8, 15, 22],
@@ -77,7 +82,9 @@ export const lines = [
     [12, 19, 26, 33], 
     [19, 26, 33, 40],
     [18, 25, 32, 39],
+
     //Below arrays are for winning diagonal line combinations where the line runs from bottom-right
+
     //to top-left
     [38, 33, 28, 23],
     [37, 32, 27, 22],

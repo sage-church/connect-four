@@ -1,3 +1,28 @@
+# Connect Four
+
+SUMMARY:
+
+This is an interactive game of Connect Four that was built using React while utilizing the 'Create React App' tool provided by 'reactjs.org'. It's intended for two players and can be reset after the completion of each game.
+
+The project was used as an opportunity to learn how React works alongside HTML and CSS. The game operates
+by keeping track of the plays that have been made by storing the 'state' of the board's individual
+circles and by searching for a winning combination of 4 circles after every move. The game also has a 
+responsive design to accomodate for different screen widths.
+
+BUILT WITH:
+
+    - HTML
+    - CSS
+    - JSX
+    - React
+
+SET UP:
+
+The below instructions under the heading 'Getting Started with Create React App' provided by 'reactjs.org' are 
+applicable to getting the application running once the project files are downloaded locally.
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

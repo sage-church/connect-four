@@ -1,6 +1,6 @@
 # Connect Four
 
-SUMMARY:
+## SUMMARY
 
 This is an interactive game of Connect Four that was built using React while utilizing the 'Create React App' tool provided by 'reactjs.org'. It's intended for two players and can be reset after the completion of each game.
 
@@ -9,19 +9,17 @@ by keeping track of the plays that have been made by storing the 'state' of the 
 circles and by searching for a winning combination of 4 circles after every move. The game also has a 
 responsive design to accomodate for different screen widths.
 
-BUILT WITH:
+## BUILT WITH
 
     - HTML
     - CSS
     - JSX
     - React
 
-SET UP:
+## SET UP
 
-The below instructions under the heading 'Getting Started with Create React App' provided by 'reactjs.org' are 
+The instructions below under the heading 'Getting Started with Create React App' provided by 'reactjs.org' are 
 applicable to getting the application running once the project files are downloaded locally.
-
-
 
 # Getting Started with Create React App
 
@@ -93,3 +91,26 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+# React Copyright and Permissions Notice
+
+Copyright (c) 2013-present, Facebook, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

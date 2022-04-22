@@ -18,10 +18,6 @@ responsive design to accomodate for different screen widths.
 
 ## SET UP
 
-### Access game through web
-
-A live version of the game can be found at http://connectfour.epizy.com.
-
 ### Download and run game locally
 
 Once the project files are downloaded, the instructions below under the heading 'Getting Started with Create React App' provided by 'reactjs.org' are applicable to getting the application running.

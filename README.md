@@ -1,5 +1,9 @@
 # Connect Four
 
+## PREVIEW
+
+![Screenshot from 2022-04-22 15-55-55](https://user-images.githubusercontent.com/38874409/164792335-cbabbaf2-8241-4cd7-a389-34f780e1d7ca.png)
+
 ## SUMMARY
 
 This is an interactive game of Connect Four that was built using React while utilizing the 'Create React App' tool provided by 'reactjs.org'. It's intended for two players and can be reset after the completion of each game.

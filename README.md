@@ -20,7 +20,7 @@ responsive design to accomodate for different screen widths.
 
 ### Download and run game locally
 
-Once the project files are downloaded, the instructions below under the heading 'Getting Started with Create React App' provided by 'reactjs.org' are applicable to getting the application running.
+Once the project files are downloaded, the instructions below under the heading 'Getting Started with Create React App' provided by 'reactjs.org' are applicable to getting the application running. The 'npm start' command will be the easiest way to fire up the program in the browser.
 
 # Getting Started with Create React App
 

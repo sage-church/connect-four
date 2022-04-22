@@ -214,7 +214,6 @@ class Game extends React.Component {
           {this.renderReset()}
         </div>
       </>
-    
     )
   }
 
@@ -223,7 +222,6 @@ class Game extends React.Component {
         <>
          {this.renderBoard()}
         </>
-
       )
   }
 }
